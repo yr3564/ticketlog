@@ -1,5 +1,6 @@
 const express=require('express');
 const cors=require('cors');
+const bodyParser=require('body-parser');
 const mongoose = require('mongoose');
 
 require('dotenv').config()
@@ -17,6 +18,9 @@ connection.once('open', () => {
     console.log("Database Connection Established");
 })
 
+
+const userRouter  = require( './routes/users', UsersRouter);
+//middleware
 app.use('/users',userRouter);
 
 app.listen(port,()=>{
