@@ -1,6 +1,6 @@
 const router = require('express').Router();
 //Get the user DbSchema from 
-let User = require('.../models/user.model');
+let User = require('../models/user.model');
 
 //Routes for the main page
 router.route('/').get((req,res)=>{
