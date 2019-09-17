@@ -19,8 +19,8 @@ router.route('/add').post((req, res)=>{
         .catch(err=> res.status(400).json('error: '+ err));
 });
 
-router.route('./:id').delete((req,res)=>{
-    User.findById(req.params.id)
+router.route('/:id').delete((req,res)=>{
+    User.findByIdAndDelete(req.params.id)
     .then(user=>res.json('User was Deleted'))
     .catch(err=>res.status(400).json('Error: '+err));
 })

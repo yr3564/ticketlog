@@ -12,11 +12,13 @@ router.route('/add').post((req,res)=>{
     const description = req.body.description;
     const date = Date.parse(req.body.date);
     const ticketnumber = Number(req.body.ticketnumber);
+    const siteNumber = Number(req.body.siteNumber);
 
     const newTicket = new Ticket({
         username,
         description,
         ticketnumber,
+        siteNumber,
         date,
     });
 
@@ -25,14 +27,14 @@ router.route('/add').post((req,res)=>{
     .catch(err => res.status(400).json('Error'+ err))
 });
 
-router.route('./id').get((req,res)=>{
+router.route('/id').get((req,res)=>{
     Ticket.findById(req.params.id)
     .then(ticket => res.json(ticket))
     .catch(err=> res.status(400).json('Error:'+err));
 });
 
-router.route('./:id').delete((req,res)=>{
-    Ticket.findById(req.params.id)
+router.route('/:id').delete((req,res)=>{
+    Ticket.findByIdAndDelete(req.params.id)
     .then(()=> res.json('Exercise deleted.'))
     .catch(err=> res.status(400).json('Error: '+ err));
 })
@@ -44,6 +46,7 @@ router.route('/update/:id').post((req,res)=>{
         ticket.description= req.body.description;
         ticket.date=Date.parse(req.body.date);
         ticket.ticketnumber=Number(req.body.ticketnumber);
+        ticket.siteNumber=Number(req.body.siteNumber);
 
         ticket.save()
         .then(()=>res.json('Exercise Updated!'))
