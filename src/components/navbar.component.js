@@ -1,28 +1,30 @@
 import React, {Component} from 'react';
 import {Link} from  'react-router-dom';
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import FormControl from 'react-bootstrap/FormControl';
 
-export default class Navbar extends Component{
+
+export default class Navbarframe extends Component{
     render(){
         return(
-            <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-                <a className="navbar-brand" href="#">Ticket Log</a>
-                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
-                </button>
-                <div className="collapse navbar-collapse" id="navbarNav">
-                    <ul className="navbar-nav">
-                    <li className="nav-item active">
-                        <Link to="/" className="nav-link" href="#">Home <span class="sr-only">(current)</span></Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link to = "/tickets"  className="nav-link" href="#">Create Log</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link to ="/users" className="nav-link" href="#">Create user</Link>
-                    </li>
-                    </ul>
-                </div>
-            </nav>
+            <Navbar bg="dark" variant="dark" expand="lg">
+                <Navbar.Brand href="/tickets">Ticket Log</Navbar.Brand>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Collapse id="basic-navbar-nav">
+                    <Nav className="mr-auto">
+                    <Nav.Link href="/tickets">Home</Nav.Link>
+                    <Nav.Link href="/users/add">Create Users</Nav.Link>
+                    <Nav.Link href="/tickets/add">Create Tickets</Nav.Link>
+                    </Nav>
+                    <Form inline>
+                        <FormControl type="text" placeholder="Pending Feature" className="mr-sm-2" />
+                        <Button variant="secondary">Search</Button>
+                    </Form>                    
+                </Navbar.Collapse>
+                </Navbar>
         )
     }
 }
