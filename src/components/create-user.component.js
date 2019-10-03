@@ -1,13 +1,12 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import Form from 'react-bootstrap/Form'
-import FormControl from 'react-bootstrap/FormControl'
+
 
 export default class CreateUser extends Component{
     constructor(props){
         super(props);
         this.onChangeUsername=this.onChangeUsername.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
+        this.onSubmit=this.onSubmit.bind(this);
 
         this.state={
             username:''
@@ -34,22 +33,24 @@ export default class CreateUser extends Component{
         window.location = '/';
     }
     render(){
-        return(            
+        return(
             <div>
-            <Form onSubmit={onSubmit}>
-                <Form.Group controlId="userform">
-                    <Form.Label>User Name</Form.Label>
-                    <Form.Control type="text" placeholder="Enter User Name"
+                <h3> Create New User</h3>
+                <form onSubmit={this.onSubmit}>
+                    <div className="form-group">
+                        <label>Username: </label>
+                        <input type="text"
                         required
+                        className="form-control"
                         value={this.state.username}
-                        onChange={this.onChangeUsername}/>                    
-                </Form.Group>
-                <Button variant="primary" type="submit">
-                    Submit
-                </Button>
-            </Form>
+                        onChange={this.onChangeUsername}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <input type="submit" value="Create User" className=" btn btn-primary"/>
+                    </div>
+                </form>            
             </div>
-        
         )
     }
 
