@@ -41,11 +41,12 @@ export default class TicketList extends Component{
                             <th>Description</th>
                             <th>Site</th>
                             <th>Date</th>
-                            <tbody>
-                                {this.ticketlistmap()}
-                            </tbody>
-                        </tr>
+                            <th>Action</th>
+                        </tr>                        
                     </thead>
+                        <tbody>
+                            {this.ticketlistmap()}
+                        </tbody>                    
                 </table>
             </div>
         )

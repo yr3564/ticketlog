@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
+import axios from 'axios';
 
 /*Logic of the code
  1 set the state of the component based on the schema
@@ -69,7 +70,16 @@ export default class CreateTicket extends Component{
             description:this.state.description,
             date:this.state.date
         }
+        axios.post('http://localhost:5000/tickets/add',ticket)
+            .then(res=>console.log(res.data));
         console.log(ticket);
+        this.setState({
+            username:'',
+            ticketnumber:0,
+            siteNumber:'',
+            description:'',
+            date:new Date(),
+        })
         //send user to home loaction after form submit
         window.location='/';
     }

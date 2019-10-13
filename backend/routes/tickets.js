@@ -12,7 +12,7 @@ router.route('/add').post((req,res)=>{
     const description = req.body.description;
     const date = Date.parse(req.body.date);
     const ticketnumber = Number(req.body.ticketnumber);
-    const siteNumber = Number(req.body.siteNumber);
+    const siteNumber = req.body.siteNumber;
 
     const newTicket = new Ticket({
         username,
@@ -46,7 +46,7 @@ router.route('/update/:id').post((req,res)=>{
         ticket.description= req.body.description;
         ticket.date=Date.parse(req.body.date);
         ticket.ticketnumber=Number(req.body.ticketnumber);
-        ticket.siteNumber=Number(req.body.siteNumber);
+        ticket.siteNumber=req.body.siteNumber;
 
         ticket.save()
         .then(()=>res.json('Exercise Updated!'))
